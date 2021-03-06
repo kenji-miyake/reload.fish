@@ -47,6 +47,14 @@ Just call `reload` and your environment will be refreshed.
 reload
 ```
 
+Also, you can set some environment variables before reloading.
+
+```sh
+# `echo ROS_DISTRO=$ROS_DISTRO` is written in .bashrc
+$ reload -e ROS_DISTRO=rolling
+ROS_DISTRO=rolling
+```
+
 ## Example
 
 ```sh
@@ -62,4 +70,43 @@ reload
 ~
 ❯ echo $value
 
+```
+
+## Tips
+
+### For ROS users
+
+With this tool, you can reload your shell in ROS1 or ROS2 mode, without modifying your .bashrc and re-launching a new terminal.
+
+```bash
+// .bashrc
+
+echo "before: ROS_DISTRO=$ROS_DISTRO, ROS_VERSION=$ROS_VERSION"
+
+# ROS
+if [ "$ROS_DISTRO" = "rolling" ]; then
+    source /opt/ros/rolling/setup.bash
+elif [ "$ROS_DISTRO" = "foxy" ]; then
+    source /opt/ros/foxy/setup.bash
+elif [ "$ROS_DISTRO" = "noetic" ]; then
+    source /opt/ros/noetic/setup.bash
+else
+    echo "Invalid ROS_DISTRO `$ROS_DISTRO` was given."
+fi
+
+echo "after: ROS_DISTRO=$ROS_DISTRO, ROS_VERSION=$ROS_VERSION"
+```
+
+```sh
+$ reload -e ROS_DISTRO=rolling
+before: ROS_DISTRO=rolling, ROS_VERSION=
+after: ROS_DISTRO=rolling, ROS_VERSION=2
+
+$ reload -e ROS_DISTRO=foxy
+before: ROS_DISTRO=foxy, ROS_VERSION=
+after: ROS_DISTRO=foxy, ROS_VERSION=2
+
+$ reload -e ROS_DISTRO=noetic
+before: ROS_DISTRO=noetic, ROS_VERSION=
+after: ROS_DISTRO=noetic, ROS_VERSION=1
 ```
