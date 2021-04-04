@@ -51,7 +51,16 @@ Also, you can set some environment variables before reloading.
 
 ```sh
 # `echo ROS_DISTRO=$ROS_DISTRO` is written in .bashrc
-$ reload -e ROS_DISTRO=rolling
+$ reload -e 'ROS_DISTRO=rolling'
+ROS_DISTRO=rolling
+```
+
+If you'd like to evaluate a command before reloading, please use `-c` option.
+
+```sh
+# `echo ROS_DISTRO=$ROS_DISTRO` is written in .bashrc
+$ cd YOUR_ROLLING_WORKSPACE
+$ reload -c 'bass source install/setup.bash' -e 'ROS_DISTRO=$ROS_DISTRO'
 ROS_DISTRO=rolling
 ```
 
@@ -98,15 +107,15 @@ echo "after: ROS_DISTRO=$ROS_DISTRO, ROS_VERSION=$ROS_VERSION"
 ```
 
 ```sh
-$ reload -e ROS_DISTRO=rolling
+$ reload -e 'ROS_DISTRO=rolling'
 before: ROS_DISTRO=rolling, ROS_VERSION=
 after: ROS_DISTRO=rolling, ROS_VERSION=2
 
-$ reload -e ROS_DISTRO=foxy
+$ reload -e 'ROS_DISTRO=foxy'
 before: ROS_DISTRO=foxy, ROS_VERSION=
 after: ROS_DISTRO=foxy, ROS_VERSION=2
 
-$ reload -e ROS_DISTRO=noetic
+$ reload -e 'ROS_DISTRO=noetic'
 before: ROS_DISTRO=noetic, ROS_VERSION=
 after: ROS_DISTRO=noetic, ROS_VERSION=1
 ```
