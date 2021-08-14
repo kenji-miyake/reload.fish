@@ -3,6 +3,8 @@ set -g RELOAD_PROTECTED_ENV_VARS \
     HOME \
     PWD \
     SHELL \
+    SSH_AGENT_PID \
+    SSH_AUTH_SOCK \
     TERM \
     VTE_VERSION \
     XAUTHORITY
