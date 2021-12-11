@@ -1,4 +1,5 @@
 set -g RELOAD_PROTECTED_ENV_VARS \
+    COLORTERM \
     DISPLAY \
     HOME \
     PWD \
