@@ -16,7 +16,7 @@ function reload
     end
 
     # Parse arguments
-    set -l options "h/help" "c/command=" "e/env=+"
+    set -l options h/help "c/command=" "e/env=+"
     argparse $options -- $argv || return 1
 
     # Show help
