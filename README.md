@@ -28,7 +28,7 @@ kenji@desktop:~$
 ### Using fisher (recommended)
 
 ```sh
-fisher add kenji-miyake/reload.fish
+fisher install kenji-miyake/reload.fish
 ```
 
 ### Using local-install script (for development)
